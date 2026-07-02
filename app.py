@@ -8,6 +8,9 @@ from agent.retrieve import hybrid_search
 
 app = FastAPI()
 
+import os
+
+PORT = int(os.environ.get("PORT", 7860))  
 
 class Message(BaseModel):
     role: str
