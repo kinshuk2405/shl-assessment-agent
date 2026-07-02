@@ -220,20 +220,5 @@ def hybrid_search(query, top_k=10):
 
         if not bad:
             filtered.append(item)
-
-            return filtered[:top_k]
-
+            
     return ranked[:top_k]
-
-
-results = hybrid_search(
-    "java developer who works with stakeholders"
-)
-
-print("\nHybrid Results:\n")
-
-for result in results:
-
-    print(f"{result['score']:.2f}")
-    print(result["item"]["name"])
-    print()

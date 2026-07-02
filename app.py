@@ -123,31 +123,3 @@ def root():
     return {
         "message": "SHL Conversational Assessment Recommender"
     }
-
-
-@app.post("/chat", response_model=ChatResponse)
-def chat(request: ChatRequest):
-
-    try:
-
-        messages = [
-            x.dict()
-            for x in request.messages
-        ]
-
-        state = reconstruct(messages)
-
-        intent = classify(
-            messages,
-            state
-        )
-
-    except Exception as e:
-
-        print(e)
-
-        return ChatResponse(
-            reply="An internal error occurred.",
-            recommendations=[],
-            end_of_conversation=False
-        )
